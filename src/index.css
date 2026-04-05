@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Syne:wght@400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #090910;
+    --foreground: #e8e8f2;
+    
+    --primary: #4f8ef7;
+    --accent: #2dd4bf;
+    
+    --surface: #0f0f1a;
+    --surface-elevated: #14141f;
+    
+    --text-secondary: #8888aa;
+    --text-muted: #44445a;
+    
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --border-medium: rgba(255, 255, 255, 0.08);
+    
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border/10;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary/30 selection:text-white;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-elevated);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-24 md:py-32 px-6 md:px-12 lg:px-20 relative overflow-hidden;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-2xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-white/[0.1] bg-white/[0.04];
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient;
+    background-image: linear-gradient(135deg, #4f8ef7 0%, #2dd4bf 100%);
+  }
+
+  .btn-shimmer {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .btn-shimmer::after {
+    content: '';
+    @apply absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg];
+  }
+
+  .btn-shimmer:hover::after {
+    @apply animate-shimmer;
+  }
+
+  /* Decorative section numbers */
+  .section-number {
+    @apply absolute -top-10 -left-10 text-[20rem] font-display font-black text-white/[0.02] select-none pointer-events-none;
+  }
+
+  /* Noise Overlay */
+  .noise-overlay {
+    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Animated Blob Background */
+  .blob {
+    @apply absolute blur-[120px] rounded-full opacity-20 pointer-events-none animate-blob;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

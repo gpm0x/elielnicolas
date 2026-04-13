@@ -17,8 +17,8 @@ export default async function handler(req, res) {
     // 1. Inicializa Supabase
     // No Vercel, as variáveis devem estar no Dashboard
     const supabase = createClient(
-      process.env.SUPABASE_URL || '',
-      process.env.SUPABASE_KEY || ''
+      process.env.ARMAZENAR_SUPABASE_URL || process.env.SUPABASE_URL || '',
+      process.env.ARMAZENAR_SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY || ''
     );
 
     // Salvar no Supabase

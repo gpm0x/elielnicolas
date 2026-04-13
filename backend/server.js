@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 5000;
 
 // Inicializa Supabase
 const supabase = createClient(
-  process.env.SUPABASE_URL || '',
-  process.env.SUPABASE_KEY || ''
+  process.env.ARMAZENAR_SUPABASE_URL || process.env.SUPABASE_URL || '',
+  process.env.ARMAZENAR_SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY || ''
 );
 
 app.use(cors());

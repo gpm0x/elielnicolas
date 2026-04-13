@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { label: "Sobre", href: "#sobre" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experiência", href: "#experiencia" },
+  { label: "Serviços", href: "#skills" },
+  { label: "Cases", href: "#experiencia" },
   { label: "Projetos", href: "#projetos" },
-  { label: "Contato", href: "#contato" },
+  { label: "Orçamento", href: "#contato" },
 ];
 
 const Navbar = () => {

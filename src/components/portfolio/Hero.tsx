@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { ChevronDown, Download, FolderOpen, Terminal } from "lucide-react";
+import { ChevronDown, MessageSquare, FolderOpen, Terminal } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
   const [terminalText, setTerminalText] = useState("");
-  const fullText = "const eliel = { builder: true, founder: true };";
+  const fullText = "const problema = eliel.resolve( seuProjeto );";
   
   useEffect(() => {
     let i = 0;
@@ -36,7 +36,7 @@ const Hero = () => {
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-[10px] sm:text-xs font-mono font-medium text-primary uppercase tracking-widest">
-              Disponível para novos desafios
+              Disponível para novos projetos
             </span>
           </motion.div>
 
@@ -72,15 +72,21 @@ const Hero = () => {
           </motion.div>
 
           {/* Description */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="max-w-xl text-lg md:text-xl text-text-secondary leading-relaxed"
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="max-w-xl"
           >
-            Builder por natureza, desenvolvedor por paixão. <br className="hidden md:block" />
-            Especialista em construir produtos digitais que escalam.
-          </motion.p>
+            <p className="text-2xl md:text-3xl font-display font-bold text-foreground leading-tight mb-3">
+              Seu próximo site, sistema ou app —{" "}
+              <span className="text-primary">entregue do jeito certo.</span>
+            </p>
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
+              Desenvolvo sites, landing pages, sistemas e SaaS customizados
+              para negócios que precisam de resultado — não só de código.
+            </p>
+          </motion.div>
 
           {/* CTAs */}
           <motion.div
@@ -90,18 +96,18 @@ const Hero = () => {
             className="flex flex-wrap gap-4 mt-4"
           >
             <a
-              href="#projetos"
+              href="#contato"
               className="group relative px-8 py-4 rounded-xl bg-primary text-white font-bold text-sm flex items-center gap-2 overflow-hidden btn-shimmer"
             >
-              <FolderOpen size={18} />
-              <span>Ver Projetos</span>
+              <MessageSquare size={18} />
+              <span>Solicitar orçamento</span>
             </a>
             <a
-              href="#contato"
+              href="#projetos"
               className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-foreground font-bold text-sm flex items-center gap-2 hover:bg-white/10 transition-all duration-300 backdrop-blur-md"
             >
-              <Download size={18} />
-              <span>Contato</span>
+              <FolderOpen size={18} />
+              <span>Ver projetos</span>
             </a>
           </motion.div>
         </div>

@@ -1,37 +1,50 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Star, Layout, Database, Smartphone } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  FileSignature,
+  Salad,
+} from "lucide-react";
+
+// ─── DATA ──────────────────────────────────────────────────────────────────────
 
 const projects = [
   {
     title: "Fechô",
-    description:
-      "SaaS completo para gestão de contratos desenvolvido com React e TypeScript. Validação de mercado com 60+ usuários reais e centenas de documentos gerados automaticamente.",
-    tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "UX/UI"],
-    featured: true,
-    stats: "60+ usuários ativos · 100+ contratos",
-    icon: Layout,
-    color: "from-blue-500 to-cyan-400"
+    category: "SaaS · Jurídico",
+    problem: "Empresas gerenciando contratos manualmente, com risco e lentidão.",
+    solution: "SaaS completo para criação e gestão de contratos com assinatura digital.",
+    result: "60+ usuários ativos · 100+ contratos gerados",
+    resultHighlight: true,
+    tags: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+    color: "from-blue-500 to-cyan-400",
+    accentColor: "text-cyan-400",
+    borderColor: "border-cyan-500/30",
+    bgColor: "bg-cyan-500/5",
+    icon: FileSignature,
+    demo: "https://fecho-one.vercel.app/",
+    code: "#",
   },
   {
     title: "DIETAI",
-    description:
-      "Aplicativo de nutrição com IA integrada para gerar refeições personalizadas.",
-    tags: ["React-Native", "Node.js", "PostgreSQL", "UX/UI"],
-    featured: false,
-    icon: Database,
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    title: "Company Code",
-    description:
-      "Empresa de tecnologia focada em soluções inovadoras como SaaS, aplicativos e sistemas web.",
-    tags: ["Next.js", "Firebase", "Tailwind"],
-    featured: false,
-    icon: Smartphone,
-    color: "from-orange-500 to-red-500"
+    category: "App · Saúde & Nutrição",
+    problem: "Planos alimentares genéricos que ignoram rotina e preferências individuais.",
+    solution: "App mobile com IA que gera refeições 100% personalizadas em segundos.",
+    result: "App em produção · IA integrada",
+    resultHighlight: false,
+    tags: ["React Native", "Node.js", "PostgreSQL", "IA"],
+    color: "from-emerald-500 to-teal-400",
+    accentColor: "text-emerald-400",
+    borderColor: "border-emerald-500/30",
+    bgColor: "bg-emerald-500/5",
+    icon: Salad,
+    demo: "https://dietai-pearl.vercel.app/",
+    code: "#",
   },
 ];
+
+// ─── COMPONENT ─────────────────────────────────────────────────────────────────
 
 const Projects = () => {
   const ref = useRef(null);
@@ -43,6 +56,8 @@ const Projects = () => {
       <span className="section-number">04</span>
 
       <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -51,115 +66,79 @@ const Projects = () => {
         >
           <p className="font-mono text-sm text-primary uppercase tracking-[0.3em] mb-4">Portfólio</p>
           <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight">
-            O que eu <span className="text-primary">construí</span>.
+            Projetos que <span className="text-primary">geram resultado</span>.
           </h2>
+          <p className="mt-5 text-text-secondary text-lg max-w-2xl leading-relaxed">
+            Mais do que projetos isolados — um{" "}
+            <span className="text-foreground font-semibold">ecossistema de produtos digitais reais</span>,
+            cada um resolvendo um problema de mercado específico.
+          </p>
         </motion.div>
 
-        <div className="grid gap-8">
-          {/* Featured project: Fechô */}
-          {projects.filter(p => p.featured).map((project) => (
+        <div className="w-full grid md:grid-cols-2 gap-6">
+          {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="group relative glass-card p-8 md:p-12 overflow-hidden"
+              transition={{ delay: 0.2 + i * 0.15, duration: 0.7 }}
+              className={`group glass-card p-8 flex flex-col gap-5 border ${project.borderColor} ${project.bgColor} hover:border-opacity-60 transition-all duration-500`}
             >
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Star size={18} className="text-accent fill-accent" />
-                    <span className="text-xs font-mono text-accent uppercase tracking-widest font-bold">Projeto Flagship</span>
+              {/* Card header */}
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.color} flex items-center justify-center shadow-lg shrink-0`}>
+                    <project.icon size={20} className="text-white" />
                   </div>
+                  <div>
+                    <p className={`text-[10px] font-mono ${project.accentColor} uppercase tracking-[0.2em] font-bold`}>
+                      {project.category}
+                    </p>
+                    <h3 className="font-display font-bold text-2xl text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <a href={project.code} className="text-text-muted hover:text-primary transition-colors">
+                    <Github size={18} />
+                  </a>
+                  <a href={project.demo} className="text-text-muted hover:text-primary transition-colors">
+                    <ExternalLink size={18} />
+                  </a>
+                </div>
+              </div>
 
-                  <h3 className="font-display font-black text-3xl md:text-5xl text-foreground mb-6">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-text-secondary text-lg mb-8 leading-relaxed max-w-xl">
-                    {project.description}
+              {/* Problem → Resultado */}
+              <div className="grid gap-2.5">
+                <div className="flex items-start gap-3">
+                  <span className="text-[9px] font-mono text-text-muted uppercase tracking-wider pt-0.5 shrink-0 w-14">Problema</span>
+                  <p className="text-text-secondary text-sm leading-relaxed">{project.problem}</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[9px] font-mono text-text-muted uppercase tracking-wider pt-0.5 shrink-0 w-14">Solução</span>
+                  <p className="text-text-secondary text-sm leading-relaxed">{project.solution}</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className={`text-[9px] font-mono uppercase tracking-wider pt-0.5 shrink-0 w-14 font-bold ${project.resultHighlight ? "text-primary" : project.accentColor}`}>
+                    Resultado
+                  </span>
+                  <p className={`text-sm font-bold ${project.resultHighlight ? "text-primary" : project.accentColor}`}>
+                    {project.result}
                   </p>
-
-                  <div className="flex flex-wrap gap-2 mb-10">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold border border-primary/20">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-6">
-                    <a href="#" className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors group/link">
-                      <Github size={20} className="group-hover/link:rotate-12 transition-transform" />
-                      Código
-                    </a>
-                    <a href="#" className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors group/link">
-                      <ExternalLink size={20} className="group-hover/link:scale-110 transition-transform" />
-                      Demo ao vivo
-                    </a>
-                  </div>
                 </div>
+              </div>
 
-                {/* Visual Mockup Area */}
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-surface-elevated border border-white/5 group-hover:border-primary/20 transition-colors">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10`} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <project.icon size={80} className="text-white/10 group-hover:text-primary/20 transition-colors group-hover:scale-110 duration-700" />
-                  </div>
-                  {/* Decorative "Browser" UI */}
-                  <div className="absolute top-0 left-0 right-0 h-8 bg-white/5 flex items-center px-4 gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-white/10" />
-                    <div className="w-2 h-2 rounded-full bg-white/10" />
-                    <div className="w-2 h-2 rounded-full bg-white/10" />
-                  </div>
-                </div>
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="px-2.5 py-1 rounded-md bg-white/5 text-[10px] font-bold text-text-muted uppercase tracking-wider border border-white/5">
+                    {tag}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
-
-          {/* Secondary projects grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.filter(p => !p.featured).map((project, i) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.1, duration: 0.6 }}
-                className="group glass-card p-8 flex flex-col gap-6 hover:border-white/20"
-              >
-                <div className="flex items-center justify-between">
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${project.color} bg-opacity-10 opacity-80 group-hover:opacity-100 transition-opacity`}>
-                    <project.icon size={24} className="text-white" />
-                  </div>
-                  <div className="flex gap-4">
-                    <a href="#" className="text-text-muted hover:text-primary transition-colors">
-                      <Github size={20} />
-                    </a>
-                    <a href="#" className="text-text-muted hover:text-primary transition-colors">
-                      <ExternalLink size={20} />
-                    </a>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="font-display font-bold text-2xl mb-4 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="px-2.5 py-1 rounded-md bg-white/5 text-[10px] font-bold text-text-muted uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

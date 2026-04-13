@@ -7,6 +7,7 @@ import Projects from "@/components/portfolio/Projects";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 
+
 const Index = () => {
   return (
     <main className="relative min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-white">
@@ -27,6 +28,8 @@ const Index = () => {
       <Projects />
       <Contact />
       <Footer />
+
+
     </main>
   );
 };

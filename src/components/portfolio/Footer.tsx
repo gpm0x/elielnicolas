@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Instagram, ArrowUp, MessageCircle } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram, ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,7 +8,7 @@ const Footer = () => {
     { icon: Github, href: "https://github.com/ElielM10100", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/eliel-nicolas-751822252/", label: "LinkedIn" },
     { icon: Instagram, href: "https://www.instagram.com/nicollaseliel/", label: "Instagram" },
-    { icon: MessageCircle, href: "https://wa.link/bpkbtc", label: "WhatsApp" },
+
   ];
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

@@ -1,68 +1,47 @@
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Rocket, Calendar, MapPin } from "lucide-react";
+import { Rocket, TrendingUp } from "lucide-react";
 
 const experiences = [
   {
+    company: "Fechô",
+    role: "Fundador & Dev",
+    result: "SaaS de contratos do zero até 60+ usuários ativos e 100+ contratos gerados.",
+    tags: ["SaaS", "React", "TypeScript", "Node.js"],
+    isFounder: true,
+    highlight: "60+ usuários · 100+ contratos",
+  },
+  {
     company: "Grupo Growth",
-    role: "Full Stack Developer",
-    period: "Mar 2025 – Jul 2025",
-    location: "Remoto",
-    description: [
-      "Desenvolvimento de sites, apps e sistemas inteligentes",
-      "Criação de bot financeiro com notícias, análises e alertas em tempo real",
-      "Automação de fluxos com n8n e suporte em Machine Learning",
-      "Gestão de projetos e definição de arquiteturas",
-    ],
+    role: "Full Stack",
+    result: "Sistemas web, automações e um bot financeiro inteligente com alertas em tempo real.",
+    tags: ["Sistema", "Automação", "n8n", "IA"],
     isFounder: false,
+    highlight: "Bot financeiro em produção",
   },
   {
     company: "MillenniuM",
-    role: "Desenvolvedor Mobile",
-    period: "Nov 2024 – Jun 2025",
-    location: "Fortaleza, CE",
-    description: [
-      "Desenvolvimento de aplicativos móveis com foco em performance",
-      "Integração robusta com APIs REST",
-      "Otimização contínua da experiência do usuário",
-    ],
+    role: "Mobile Dev",
+    result: "Apps mobile integrados a APIs com foco em performance e experiência do usuário.",
+    tags: ["App Mobile", "React Native", "APIs REST"],
     isFounder: false,
+    highlight: "Apps publicados nas lojas",
   },
   {
     company: "EEM Dep. Francisco Monte",
-    role: "Desenvolvedor Web & Instrutor",
-    period: "Jan 2024 – Jun 2025",
-    location: "Fortaleza, CE",
-    description: [
-      "Responsável técnico pela infraestrutura web da instituição",
-      "Automação de processos internos e criação de sistemas digitais",
-      "Instrutor de programação e tecnologia para 30+ alunos",
-    ],
+    role: "Dev & Instrutor",
+    result: "Infraestrutura web da instituição + automação interna + 30+ alunos formados em programação.",
+    tags: ["Web", "Automação", "Ensino"],
     isFounder: false,
-  },
-  {
-    company: "Fechô",
-    role: "Fundador & CEO",
-    period: "Mar 2023 – Presente",
-    location: "Fortaleza, CE",
-    description: [
-      "SaaS desenvolvido com React e TypeScript do zero até validação",
-      "60+ usuários ativos · 100+ contratos gerados",
-      "Foco total em UX, performance e evolução contínua do produto",
-    ],
-    isFounder: true,
+    highlight: "30+ alunos formados",
   },
   {
     company: "IJCPM",
     role: "Front-End Developer",
-    period: "Jan 2022 – Dez 2023",
-    location: "Fortaleza, CE",
-    description: [
-      "Criação de sistemas com React, JavaScript e Python",
-      "Integração com Google Forms e MySQL",
-      "Manutenção de sistemas web e correção de bugs",
-    ],
+    result: "Sistemas web em React e Python, integração com bancos de dados e otimização de processos internos.",
+    tags: ["React", "Python", "MySQL"],
     isFounder: false,
+    highlight: "Sistemas internos otimizados",
   },
 ];
 
@@ -93,9 +72,9 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
           className="mb-20"
         >
-          <p className="font-mono text-sm text-primary uppercase tracking-[0.3em] mb-4">Trajetória</p>
+          <p className="font-mono text-sm text-primary uppercase tracking-[0.3em] mb-4">Casos de sucesso</p>
           <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight">
-            Onde eu <span className="text-primary">construí</span> minha carreira.
+            Onde já <span className="text-primary">entreguei</span> resultado.
           </h2>
         </motion.div>
 
@@ -134,7 +113,7 @@ const Experience = () => {
                     <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-primary via-accent to-primary animate-gradient-xy opacity-30 -z-10" />
                   )}
 
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-5">
                     <div>
                       <div className="flex items-center gap-3 mb-1">
                         <h3 className="font-display font-bold text-2xl text-foreground group-hover:text-primary transition-colors">
@@ -146,32 +125,30 @@ const Experience = () => {
                           </span>
                         )}
                       </div>
-                      <p className="text-primary font-medium flex items-center gap-2">
-                        <Briefcase size={16} />
-                        {exp.role}
-                      </p>
+                      <p className="text-primary font-medium text-sm">{exp.role}</p>
                     </div>
-                    
-                    <div className="flex flex-col md:items-end gap-1 text-xs font-mono text-text-muted">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar size={14} />
-                        {exp.period}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <MapPin size={14} />
-                        {exp.location}
-                      </span>
+
+                    {/* Highlight stat */}
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 border border-primary/20 text-primary text-xs font-bold shrink-0">
+                      <TrendingUp size={14} />
+                      {exp.highlight}
                     </div>
                   </div>
 
-                  <ul className="grid gap-3">
-                    {exp.description.map((item, j) => (
-                      <li key={j} className="text-text-secondary text-sm leading-relaxed flex items-start gap-3">
-                        <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
-                        {item}
-                      </li>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-5">
+                    {exp.result}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 rounded-md bg-white/5 text-[10px] font-bold text-text-muted uppercase tracking-wider border border-white/5"
+                      >
+                        {tag}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </motion.div>
             ))}

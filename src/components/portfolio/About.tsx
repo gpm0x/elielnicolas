@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, FileText, Layers, ArrowRight } from "lucide-react";
+import { Users, FileText, Clock, Layers, ArrowRight } from "lucide-react";
 import profileImg from "@/assets/eu.jpeg";
 
 const stats = [
-  { icon: Users, value: "60+", label: "Usuários ativos", color: "text-primary" },
-  { icon: FileText, value: "100+", label: "Contratos gerados", color: "text-accent" },
-  { icon: Layers, value: "2", label: "Apps publicados", color: "text-primary" },
+  { icon: Users, value: "60+", label: "Clientes atendidos", color: "text-primary" },
+  { icon: FileText, value: "100+", label: "Contratos entregues", color: "text-accent" },
+  { icon: Clock, value: "3+", label: "Anos de experiência", color: "text-primary" },
+  { icon: Layers, value: "4+", label: "Projetos em produção", color: "text-accent" },
 ];
 
 const About = () => {
@@ -57,22 +58,27 @@ const About = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
+              <p className="font-mono text-sm text-primary uppercase tracking-[0.3em] mb-4">Por que me contratar?</p>
               <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight leading-none mb-8">
-                Construindo o <span className="text-primary">futuro</span> através do código.
+                Resultado real, <span className="text-primary">não só código</span>.
               </h2>
 
               <div className="grid gap-6 text-text-secondary leading-relaxed text-lg">
                 <p>
-                  Desenvolvedor Full Stack especializado no ecossistema <span className="text-foreground font-medium">React, Next.js, Node.js e TypeScript</span>.
-                  Minha abordagem une a precisão técnica com uma visão empreendedora lapidada na prática.
+                  Sou Eliel Nicolas, desenvolvedor com mais de{" "}
+                  <span className="text-foreground font-medium">3 anos criando produtos digitais reais</span>{" "}
+                  — de landing pages que convertem até sistemas SaaS com usuários ativos.
                 </p>
                 <p>
-                  Como fundador da <span className="text-accent font-semibold underline decoration-accent/30 underline-offset-4">Fechô</span>,
-                  construí um SaaS do zero que validou seu valor no mercado real, atendendo mais de 60 usuários e automatizando centenas de contratos.
+                  Como fundador da{" "}
+                  <span className="text-accent font-semibold underline decoration-accent/30 underline-offset-4">Fechô</span>,
+                  construí do zero um SaaS que chegou a{" "}
+                  <span className="text-foreground font-medium">60+ usuários ativos e 100+ contratos gerados</span>{" "}
+                  — provando que sei entregar e não apenas desenvolver.
                 </p>
                 <p>
-                  Acredito que o código é uma ferramenta para <span className="text-foreground">resolver problemas reais</span>.
-                  Minha missão é transformar ideias complexas em produtos digitais escaláveis e centrados no usuário.
+                  Quando você me contrata, você recebe{" "}
+                  <span className="text-foreground">produto que funciona, que vende e que escala</span>.
                 </p>
               </div>
             </motion.div>

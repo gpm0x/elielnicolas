@@ -34,7 +34,7 @@ app.post('/api/contact', async (req, res) => {
   try {
     // 1. Salvar no Supabase
     const { error: dbError } = await supabase
-      .from('users_mensange')
+      .from('users-mensange')
       .insert([
         { name, contact, service, message }
       ]);

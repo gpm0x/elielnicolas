@@ -21,7 +21,7 @@ const STACK = [
 ];
 
 const SPECS = [
-  { k: "Experiência", v: "3+ anos" },
+  { k: "Experiência", v: "5+ anos" },
   { k: "Base", v: "Fortaleza, CE" },
   { k: "Foco", v: "Produto & SaaS" },
 ];

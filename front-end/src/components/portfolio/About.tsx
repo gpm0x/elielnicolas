@@ -4,24 +4,24 @@ import profileImg from "@/assets/eu.jpeg";
 import { Reveal, SectionHeading } from "./primitives";
 
 const STATS = [
-  { value: 60, suffix: "+", label: "Clientes atendidos" },
-  { value: 100, suffix: "+", label: "Contratos entregues" },
-  { value: 3, suffix: "+", label: "Anos de experiência" },
-  { value: 4, suffix: "+", label: "Produtos em produção" },
+  { value: 90, suffix: "+", label: "Clientes atendidos" },
+  { value: 5, suffix: "+", label: "Anos de experiência" },
+  { value: 60, suffix: "+", label: "Usuários ativos na Fechô" },
+  { value: 100, suffix: "+", label: "Contratos gerados" },
 ];
 
 const PRINCIPLES = [
   {
-    title: "Entrego, não só desenvolvo",
-    body: "Escopo fechado, prazo real e um produto no ar. Código bonito que ninguém usa não conta como entrega.",
+    title: "Foco na entrega",
+    body: "Cada projeto é conduzido com objetivos claros, escopo definido e atenção aos prazos. Meu compromisso é entregar soluções funcionais, bem construídas e prontas para uso real.",
   },
   {
-    title: "Penso como fundador",
-    body: "Já tive que vender, dar suporte e sustentar o próprio produto. Isso muda as decisões técnicas que tomo pelo seu.",
+    title: "Visão de produto e negócio",
+    body: "Com experiência no desenvolvimento de soluções para clientes e na construção do meu próprio SaaS, considero não apenas os requisitos técnicos, mas também os objetivos comerciais e a experiência de quem utilizará o produto.",
   },
   {
-    title: "Construo para escalar",
-    body: "Arquitetura que aguenta o próximo ano, não só o próximo deploy. Sem dívida técnica escondida na entrega.",
+    title: "Tecnologia preparada para crescer",
+    body: "Desenvolvo com foco em organização, manutenção e escalabilidade. Cada decisão técnica considera as necessidades atuais do projeto e sua capacidade de evoluir no futuro.",
   },
 ];
 
@@ -58,16 +58,17 @@ const About = () => (
         kicker="Sobre"
         title={
           <>
-            Resultado real,
+            Transformo ideias em produtos digitais
             <br />
-            <span className="stroke-ink">não só código.</span>
+            <span className="stroke-ink">que geram resultados.</span>
           </>
         }
         note={
           <>
-            Sou Eliel Nicolas, desenvolvedor full-stack há mais de três anos
-            construindo produtos digitais reais — de landing pages que convertem
-            a sistemas SaaS com usuários ativos todos os dias.
+            Sou Eliel Nicolas, desenvolvedor Full-Stack com mais de 5 anos de
+            experiência no desenvolvimento de produtos digitais — desde landing
+            pages de alta conversão até plataformas SaaS completas, sempre com
+            foco em performance, escalabilidade e experiência do usuário.
           </>
         }
       />
@@ -101,28 +102,44 @@ const About = () => (
           <Reveal delay={0.1}>
             <div className="space-y-6 text-[17px] leading-[1.7] text-ink-muted">
               <p>
-                Como fundador da{" "}
-                <span className="font-medium text-accent">Fechô</span>, construí
-                do zero um SaaS de contratos que chegou a{" "}
-                <span className="text-ink">
-                  60+ usuários ativos e 100+ contratos gerados
-                </span>
-                . Não foi um projeto de portfólio — foi um produto com clientes,
-                suporte e faturamento.
+                Ao longo da minha trajetória, já atendi{" "}
+                <span className="text-ink">mais de 90 clientes</span>,
+                desenvolvendo soluções digitais alinhadas às necessidades de
+                diferentes negócios.
               </p>
               <p>
-                Essa experiência é o que separa quem escreve código de quem
-                entrega negócio. Quando você me contrata, recebe{" "}
+                Como fundador da{" "}
+                <span className="font-medium text-accent">Fechô</span>,
+                desenvolvi um SaaS de contratos do zero, que alcançou mais de{" "}
                 <span className="text-ink">
-                  um produto que funciona, que vende e que escala
+                  60 usuários ativos e 100 contratos gerados
+                </span>
+                . Uma experiência que foi além do desenvolvimento: envolveu
+                validação de produto, atendimento aos usuários, suporte e
+                construção de um negócio real.
+              </p>
+              <p>
+                Essa vivência moldou minha forma de trabalhar. Acredito que
+                tecnologia de qualidade não se resume a escrever código, mas a{" "}
+                <span className="text-ink">
+                  resolver problemas, otimizar processos e criar soluções que
+                  gerem valor de verdade
                 </span>
                 .
+              </p>
+              <p>
+                Meu objetivo é transformar necessidades em produtos digitais
+                funcionais, eficientes e preparados para evoluir junto com o
+                negócio.
               </p>
             </div>
           </Reveal>
 
           {/* Principles as a numbered index list */}
-          <div className="mt-12 border-t border-border">
+          <Reveal delay={0.12}>
+            <p className="eyebrow mt-12">Como trabalho</p>
+          </Reveal>
+          <div className="mt-4 border-t border-border">
             {PRINCIPLES.map((item, i) => (
               <Reveal key={item.title} delay={0.15 + i * 0.07}>
                 <div className="group grid grid-cols-[auto_1fr] gap-x-5 border-b border-border py-6 transition-colors duration-500 hover:bg-white/[0.015]">
@@ -141,6 +158,14 @@ const About = () => (
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.4}>
+            <p className="mt-8 font-display text-lg font-bold leading-snug tracking-headline text-ink">
+              Meu compromisso é transformar desafios em soluções digitais de
+              qualidade, combinando experiência técnica, visão estratégica e{" "}
+              <span className="text-primary">foco em resultados.</span>
+            </p>
+          </Reveal>
         </div>
       </div>
 
